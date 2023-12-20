@@ -1,18 +1,33 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const walletAddressInput = document.getElementById('wallet-address');
-    const inscriptionForm = document.getElementById('inscription-form');
+// values are now hardcoded, since the campaign has ended
 
-    // Add event listeners for form submission, etc.
-    inscriptionForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        // TODO: Validate input fields
-        // TODO: Implement wallet connection logic
-        // TODO: Handle file uploads
-        // TODO: Submit to blockchain and pay invoice
-    });
+function pad(num, size) {
+  num = num.toString()
+  while (num.length < size) num = "0" + num
+  return num
+}
 
-    // Add wallet connection logic here
-    document.querySelector('.connect-wallet').addEventListener('click', () => {
-        // TODO: Connect to MetaMask or other crypto wallets
-    });
-});
+async function fetchWalletValue() {
+  const data = 163428
+  const stringToAdd = pad(parseInt(data), 6).toString()
+  for (let x = 0; x < stringToAdd.length; x++) {
+    document.getElementById(`digi-${x+1}`).innerText = stringToAdd[x]
+  }
+}
+
+async function fetchRecent() {
+  document.getElementById('recent').innerText = 1.9
+}
+
+async function fetchHighest() {
+  document.getElementById('highest').innerText = 25000
+}
+
+async function fetchCount() {
+  document.getElementById('count').innerText = 538
+}
+
+
+fetchWalletValue()
+fetchRecent()
+fetchHighest()
+fetchCount()
